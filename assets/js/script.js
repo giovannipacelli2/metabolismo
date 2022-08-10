@@ -66,9 +66,41 @@ calculator.onpointerdown = function (e) {
     e.preventDefault();
 }
 
-calculator.addEventListener( "click", check );
+calculator.addEventListener( "click", checkButton );
+calculator.addEventListener("focusin", checkKey );
+calculator.onsubmit = (e) => { e.preventDefault(); };
 
-function check(e) {
+/*-------------------MANAGEMENT-KEY-ENTER-------------------------*/
+
+function checkKey(e) {
+    let input = e.target.closest("#weight");
+    
+    if (!input) return;
+
+    input.addEventListener("keydown", pressEnter);
+    input.focus();
+}
+
+function removePressEnter(e) {
+    let input = e.target.closest("#weight");
+
+    if (!input) return;
+
+    input.removeEventListener("keydown", pressEnter);
+}
+
+function pressEnter(e) {
+    let enter = e.key;
+
+    if ( enter == "Enter" ) {
+        getInformation();
+    }
+    else return;
+}
+
+/*----------------GET-THE-INFORMATION-BY-FORM---------------------*/
+
+function checkButton(e) {
     let button = e.target.closest(".button");
 
     if (!button) return;
@@ -102,6 +134,8 @@ function getInformation() {
     
 }
 
+/*---------------------FUNCTION-CALCULATE-------------------------*/
+
 function calculatorKcal( weight, gender, age, work, workout ) {
 
     let base = calculateBase(weight, gender, age);
@@ -129,6 +163,7 @@ function calculateActivity(g, a, w, wt) {
 
     return res;
 }
+/*--------------------WRITE-RESULT-IN-A-DIV-----------------------*/
 
 function write(base, total) {
 
