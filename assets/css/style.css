@@ -57,6 +57,8 @@ input, select {
     border-radius: 5px;
 
     text-align: center;
+
+    margin: 0 auto;
 }
 
 .button:hover, .button:focus {
@@ -129,6 +131,10 @@ input, select, .button {
     #calculator {
         margin: 20px auto;
         width: 450px;
+    }
+
+    .button {
+        margin: 0;
     }
 
     #table tr {
