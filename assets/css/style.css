@@ -1,0 +1,145 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 1.2em;
+}
+
+input, select {
+    font-size: 0.8em;
+    padding: 3px 5px;
+}
+
+#calculator {
+
+    margin: 20px auto;
+    padding: 0 10px;
+    width: 100%;
+}
+
+#table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.row {
+    padding: 10px 5px;
+    width: 100%;
+}
+
+.row label {
+    margin-right: 0;
+    margin-bottom: 10px;
+}
+
+#table th {
+    font-size: 1.3em;
+}
+
+#table tr {
+    min-height: 50px;
+}
+
+#table td {
+    height: 100%;
+}
+
+.button {
+
+    background-color: rgba(103, 239, 175, 0.368);
+
+    font-size: 0.9em;
+    width: 130px;
+
+    border-radius: 5px;
+
+    text-align: center;
+}
+
+.button:hover, .button:focus {
+    color: white;
+    background-color: rgb(28, 141, 107);
+    cursor: pointer;
+}
+
+/*-------------RESULT-----------------*/
+.flex-center {
+    display: flex;
+    align-items: center;
+}
+
+.res {
+    display: inline-block;
+
+    min-width: 100px;
+    height: 25px;
+    margin-left: 40px;
+}
+
+#result-basale, #result-totale {
+    color: red;
+    margin-left: 10px;
+}
+
+.error {
+    border: 1px solid red;
+    outline: 1px solid red;
+}
+
+.row p {
+    display: inline;
+}
+
+/*---------------COLOR----------------*/
+
+#table td {
+    border: 2px solid rgb(86, 196, 145);
+}
+
+input, select, .button {
+    border: 2px solid rgb(47, 108, 79);
+}
+
+#calculator {
+    color:rgb(13, 80, 60);
+    font-weight: 600;
+}
+
+#calculator th{
+    color:rgb(175, 12, 12);
+}
+
+.res {
+    border: 2px solid rgb(175, 12, 12);
+}
+
+#message {
+    color: red;
+    margin-top: 10px;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+@media only screen and (min-width: 500px) {
+    
+    #calculator {
+        margin: 20px auto;
+        width: 450px;
+    }
+
+    #table tr {
+        height: 50px;
+    }
+
+    .row {
+        padding: 0 30px;
+    }
+
+    .row label {
+        margin-right: 40px;
+    }
+}
