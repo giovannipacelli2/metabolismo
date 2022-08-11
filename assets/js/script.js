@@ -128,6 +128,11 @@ function getInformation() {
     let gender = calculator.gender.value;
     let age = calculator.age.value;
     let work = calculator.work.value;
+
+    if( age != "18_29" && age != "30_59" ) {
+	work = "laf";
+    } 
+
     let workout = calculator.workout.value;
 
     calculatorKcal( weight, gender, age, work, workout );
