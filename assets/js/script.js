@@ -130,7 +130,7 @@ function getInformation() {
     let work = calculator.work.value;
 
     if( age != "18_29" && age != "30_59" ) {
-	work = "laf";
+	    work = "laf";
     } 
 
     let workout = calculator.workout.value;
