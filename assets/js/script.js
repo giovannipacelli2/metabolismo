@@ -111,10 +111,13 @@ function checkButton(e) {
 
         case "reset" : {
             
+            let input = document.body.querySelector("#weight");
             let a = document.body.querySelector("#result-basale");
             let b = document.body.querySelector("#result-totale");
+            let message = document.body.querySelector("#message");
 
-            cleanText(a,b);
+            cleanText(input,a,b,message);
+            input.classList.remove("error");
             break;
         }
     }   
