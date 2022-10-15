@@ -60,33 +60,30 @@ let calculator = document.body.querySelector("#calculator");
 let message = document.body.querySelector( "#message" );
 
 calculator.onpointerdown = function (e) {
-    let button = e.target.closest(".button");
+    let button = e.target.closest("#calculate");
 
     if (!button) return;
     e.preventDefault();
 }
-
+/*--------------------LISTENER-FOR-CLICK--------------------------*/
 calculator.addEventListener( "click", checkButton );
-calculator.addEventListener("focusin", checkKey );
 calculator.onsubmit = (e) => { e.preventDefault(); };
+
+/*------------------LISTENER-FOR-KEY-ENTER------------------------*/
+
+calculator.addEventListener("focusin", listenEnter );
+calculator.addEventListener("focusout", removePressEnter );
+
 
 /*-------------------MANAGEMENT-KEY-ENTER-------------------------*/
 
-function checkKey(e) {
-    let input = e.target.closest("#weight");
-    
-    if (!input) return;
+function listenEnter(e) {
+    calculator.addEventListener("keydown", pressEnter);
 
-    input.addEventListener("keydown", pressEnter);
-    input.focus();
 }
 
 function removePressEnter(e) {
-    let input = e.target.closest("#weight");
-
-    if (!input) return;
-
-    input.removeEventListener("keydown", pressEnter);
+    calculator.removeEventListener("keydown", pressEnter);
 }
 
 function pressEnter(e) {
@@ -101,11 +98,26 @@ function pressEnter(e) {
 /*----------------GET-THE-INFORMATION-BY-FORM---------------------*/
 
 function checkButton(e) {
-    let button = e.target.closest(".button");
+    let button = e.target;
 
     if (!button) return;
 
-    getInformation();
+    switch( button.id ) {
+
+        case "calculate" : {
+            getInformation();
+            break;
+        }
+
+        case "reset" : {
+            
+            let a = document.body.querySelector("#result-basale");
+            let b = document.body.querySelector("#result-totale");
+
+            cleanText(a,b);
+            break;
+        }
+    }   
 
 }
 
@@ -189,4 +201,11 @@ function removeError(e) {
     weight.classList.remove("error");
     message.textContent = "";
 
+}
+
+function cleanText(...arr){
+    for ( let elem of arr ) {
+        elem.textContent = "";
+        elem.value = "";
+    }
 }
