@@ -1,63 +1,28 @@
 'use strict'
 
-let basale = {
-    man : {
-        "18_29" : {
-            k1 : 15.3,
-            k2 : 679,
-            light : [1.41, 1.55],   /*1: soggetto non allenato, 2: soggetto allenato*/
-            medium : [1.70, 1.78],
-            hard : [2.01, 2.10]
-        },
-        "30_59" : {
-            k1 : 11.6,
-            k2 : 879,
-            light : [1.41, 1.55],
-            medium : [1.70, 1.78],
-            hard : [2.01, 2.10]
-        },
-        "60_74" : {
-            k1 : 11.9,
-            k2 : 700,
-            laf : [1.40, 1.51]
-        },
-        "74" : {
-            k1 : 8.4,
-            k2 : 819,
-            laf : [1.33, 1.51]
-        }
-    },
+/*-------------------------CALL-OBJECT----------------------------*/
 
-    woman :{
-        "18_29" : {
-            k1 : 14.7,
-            k2 : 496,
-            light : [1.42, 1.56],
-            medium : [1.56, 1.64],
-            hard : [1.73, 1.82]
-        },
-        "30_59" : {
-            k1 : 8.7,
-            k2 : 829,
-            light : [1.42, 1.56],
-            medium : [1.56, 1.64],
-            hard : [1.73, 1.82]
-        },
-        "60_74" : {
-            k1 : 9.2,
-            k2 : 688,
-            laf : [1.44, 1.56]
-        },
-        "74" : {
-            k1 : 9.8,
-            k2 : 624,
-            laf : [1.37, 1.56]
-        }
-    }
+let requestURL = './assets/json/json.json';
+let request = new XMLHttpRequest();
+request.open( 'GET', requestURL );
+request.responseType = 'json';
+request.send();
+
+let basale;
+
+request.onload = function () {
+    basale = request.response;
 }
+
+/*----------------------VAR-DECLARATION---------------------------*/
 
 let calculator = document.body.querySelector("#calculator");
 let message = document.body.querySelector( "#message" );
+
+
+/*--------------------LISTENER-FOR-CLICK--------------------------*/
+calculator.addEventListener( "click", checkButton );
+calculator.onsubmit = (e) => { e.preventDefault(); };
 
 calculator.onpointerdown = function (e) {
     let button = e.target.closest("#calculate");
@@ -65,9 +30,6 @@ calculator.onpointerdown = function (e) {
     if (!button) return;
     e.preventDefault();
 }
-/*--------------------LISTENER-FOR-CLICK--------------------------*/
-calculator.addEventListener( "click", checkButton );
-calculator.onsubmit = (e) => { e.preventDefault(); };
 
 /*------------------LISTENER-FOR-KEY-ENTER------------------------*/
 
